@@ -5,18 +5,12 @@ import ru.netology.domain.Product;
 import ru.netology.repository.ProductRepository;
 import ru.netology.domain.Smartphone;
 
-import java.time.Period;
-
 public class ProductManager {
 
     private ProductRepository repository;
 
     public ProductManager(ProductRepository repository) {
         this.repository = repository;
-    }
-
-    public ProductManager() {
-
     }
 
     public void add(Product item) {
@@ -36,9 +30,8 @@ public class ProductManager {
         return found;
     }
 
-
     public boolean matches(Product product, String search) {
-        if (product instanceof Book){
+        if (product instanceof Book) {
             Book book = (Book) product;
             if (book.getName().equalsIgnoreCase(search)) {
                 return true;
@@ -47,7 +40,7 @@ public class ProductManager {
                 return true;
             }
         }
-        if (product instanceof Smartphone){
+        if (product instanceof Smartphone) {
             Smartphone smartphone = (Smartphone) product;
             if (smartphone.getName().equalsIgnoreCase(search)) {
                 return true;

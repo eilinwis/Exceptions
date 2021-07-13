@@ -87,14 +87,16 @@ class ProductManagerTest {
         assertArrayEquals(expected, actual);
 
     }
+
     @Test
-    void shouldCheckDelete(){
+    void shouldCheckDelete() {
         repository.removeById(3);
         assertNull(repository.findById(3));
     }
+
     @Test
     void shouldThrowException() {
-      assertThrows(NotFoundException.class,() -> repository.removeById(33));
+        assertThrows(NotFoundException.class, () -> repository.removeById(33));
     }
 
 }

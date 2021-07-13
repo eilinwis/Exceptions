@@ -1,14 +1,11 @@
 package ru.netology.repository;
 
-
-import lombok.SneakyThrows;
 import ru.netology.Exceptions.NotFoundException;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
-import ru.netology.manager.ProductManager;
+
 
 public class ProductRepository {
-    ProductManager manager = new ProductManager();
     private Product[] items = new Product[0];
     Book book = new Book();
 
@@ -34,20 +31,21 @@ public class ProductRepository {
         }
         return null;
     }
-    public void removeById ( int id) {
+
+    public void removeById(int id) {
         if (findById(id) == null) {
             throw new NotFoundException("====> Element with id: " + id + " not found <====");
         }
-            int length = items.length - 1;
-            Product[] tmp = new Product[length];
-            int index = 0;
-            for (Product item : items) {
-                if (item.getId() != id) {
-                    tmp[index] = item;
-                    index++;
-                }
+        int length = items.length - 1;
+        Product[] tmp = new Product[length];
+        int index = 0;
+        for (Product item : items) {
+            if (item.getId() != id) {
+                tmp[index] = item;
+                index++;
             }
-            items = tmp;
-
         }
+        items = tmp;
+
     }
+}
