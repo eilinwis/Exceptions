@@ -5,12 +5,15 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import ru.netology.Exceptions.NotFoundException;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.repository.ProductRepository;
 import ru.netology.manager.ProductManager;
 import ru.netology.domain.Smartphone;
 
+import java.io.IOException;
+import java.nio.file.Files;
 
 
 class ProductManagerTest {
@@ -84,4 +87,14 @@ class ProductManagerTest {
         assertArrayEquals(expected, actual);
 
     }
+    @Test
+    void shouldCheckDelete(){
+        repository.removeById(3);
+        assertNull(repository.findById(3));
+    }
+    @Test
+    void shouldThrowException() {
+      assertThrows(NotFoundException.class,() -> repository.removeById(33));
+    }
+
 }
